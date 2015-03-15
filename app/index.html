@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="kibanaApp">
+  <body ng-app="timelineApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -47,7 +47,21 @@
       </div>
     </div>
 
-    <div class="container">
+    <div ng-controller="TimelineController" class="container">
+    <!-- if there is an error, display its message -->
+    <div ng-if="error" class="alert alert-danger" role="alert">{{error.message}}</div>
+
+    <!-- if clusterState is available, display it as formatted json -->
+    <div ng-if="clusterState" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Cluster State</h3>
+      </div>
+      <div class="panel-body">
+        <pre>{{clusterState | json}}</pre>
+      </div>
+    </div>
+  </div>
+
     <div ng-view=""></div>
     </div>
 
@@ -80,6 +94,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/elasticsearch/elasticsearch.angular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

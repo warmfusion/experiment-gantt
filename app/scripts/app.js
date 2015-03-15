@@ -2,26 +2,28 @@
 
 /**
  * @ngdoc overview
- * @name kibanaApp
+ * @name timelineApp
  * @description
- * # kibanaApp
+ * # timelineApp
  *
  * Main module of the application.
  */
 angular
-  .module('kibanaApp', [
+  .module('timelineApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.sortable',
+    'elasticsearch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'Search'
       })
       .when('/about', {
         templateUrl: 'views/about.html',

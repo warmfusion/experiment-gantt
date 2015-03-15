@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name kibanaApp.controller:AboutCtrl
+ * @name timelineApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the kibanaApp
+ * Controller of the timelineApp
  */
-angular.module('kibanaApp')
+angular.module('timelineApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
