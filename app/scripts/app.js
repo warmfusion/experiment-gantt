@@ -17,7 +17,10 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
-    'elasticsearch'
+    'ui.tree',
+    'elasticsearch',
+    'gantt',
+    'gantt.tree'
   ])
   .config(function ($routeProvider) {
     $routeProvider

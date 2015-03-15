@@ -1,32 +1,42 @@
 <div class="container">
-  <h2>My Todo List</h2>
+  <h2>Workflow Event Visualiser</h2>
 
   <!-- Todos input -->
   <form role="form" ng-submit="search()">
     <div class="row">
       <div class="input-group">
-        <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
+        <input type="text" ng-model="todo" placeholder="What event ID do you want to view?" class="form-control">
         <span class="input-group-btn">
           <input type="submit" class="btn btn-primary" value="Add">
         </span>
       </div>
     </div>
 
-        <!-- if clusterState is available, display it as formatted json -->
-    <div ng-if="searchRaw" class="panel panel-default">
+
+
+    <!-- Todos list -->
+    <div ng-model="todo">
+
+      <div gantt 
+          data=ganttdata 
+          headers="['day', 'hour', 'minute']" 
+          headers-formats="headersFormats"
+          view-scale="'minute'">
+        <gantt-tree></gantt-tree>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <!-- if clusterState is available, display it as formatted json -->
+     <div ng-if="searchRaw" class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Search Json</h3>
       </div>
       <div class="panel-body">
-        <pre>{{searchRaw | json}}</pre>
+        <pre>{{ganttdata | json}}</pre>
       </div>
-    </div>
-
-    <!-- Todos list -->
-    <div ui-sortable  ng-model="todos">
-    <p class="form-group" ng-repeat="result in hits" style="padding:5px 10px; cursor: move;">
-      {{ result['_id'] }} | {{ result['_source']['parent'] }} -> {{ result['_source']['id'] }}
-    </p>
     </div>
   </form>
 </div>
