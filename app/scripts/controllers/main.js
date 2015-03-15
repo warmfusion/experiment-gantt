@@ -11,7 +11,8 @@ var TimelineApp = angular.module('timelineApp');
 
 
     TimelineApp.controller('Search', function ($scope, client) {
-        $scope.todos = ['item one'];
+        $scope.hits = [];
+
         $scope.addTodo = function () {
           $scope.todos.push($scope.todo);
           $scope.todo = '';
@@ -25,12 +26,16 @@ var TimelineApp = angular.module('timelineApp');
           client.search({
             q: $scope.todo
           }).then(function (body) {
-            var hits = body.hits.hits;
+            $scope.hits = body.hits.hits;
             $scope.searchRaw = body.hits.hits;
           }, function (error) {
             console.trace(error.message);
           });
         };
+
+
+
+
 
       });
 

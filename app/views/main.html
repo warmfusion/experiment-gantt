@@ -15,7 +15,7 @@
         <!-- if clusterState is available, display it as formatted json -->
     <div ng-if="searchRaw" class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Cluster State</h3>
+        <h3 class="panel-title">Search Json</h3>
       </div>
       <div class="panel-body">
         <pre>{{searchRaw | json}}</pre>
@@ -24,11 +24,8 @@
 
     <!-- Todos list -->
     <div ui-sortable  ng-model="todos">
-    <p class="form-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
-      <input type="text" ng-model="todo" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
-      </span>
+    <p class="form-group" ng-repeat="result in hits" style="padding:5px 10px; cursor: move;">
+      {{ result['_id'] }} | {{ result['_source']['parent'] }} -> {{ result['_source']['id'] }}
     </p>
     </div>
   </form>
